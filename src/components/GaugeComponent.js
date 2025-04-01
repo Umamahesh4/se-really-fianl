@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { RadialGauge } from 'canvas-gauges';
-import "./gps.css";
+import './gps.css';
 
 const GaugeComponent = ({ id, value = 0, unit = '', min = 0, max = 100, width = 200, height = 200 }) => {
   const canvasRef = useRef(null);
   const gaugeRef = useRef(null);
 
+  // Initialize the gauge only once on mount
   useEffect(() => {
-    // Initialize the gauge
     gaugeRef.current = new RadialGauge({
       renderTo: canvasRef.current,
       width,
@@ -25,16 +25,16 @@ const GaugeComponent = ({ id, value = 0, unit = '', min = 0, max = 100, width = 
     gaugeRef.current.draw();
 
     return () => {
-      // Destroy the gauge when the component unmounts
       if (gaugeRef.current) {
         gaugeRef.current.destroy();
         gaugeRef.current = null;
       }
     };
-  }, []); // Run only on mount and unmount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  // Update the gauge when any of these props change
   useEffect(() => {
-    // Update the gauge when props change
     if (gaugeRef.current) {
       gaugeRef.current.update({
         value,
