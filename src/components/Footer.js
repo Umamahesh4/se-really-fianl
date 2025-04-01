@@ -6,26 +6,26 @@ function Footer() {
       <div className="footer-col">
         <h4>About Us</h4>
         <ul>
-          <li>Our Story</li>
-          <li>Careers</li>
-          <li>Privacy Policy</li>
+          <li><button className="link-button">Our Story</button></li>
+          <li><button className="link-button">Careers</button></li>
+          <li><button className="link-button">Privacy Policy</button></li>
         </ul>
       </div>
       <div className="footer-col">
         <h4>Contact Us</h4>
         <ul>
-          <li><a>Support</a></li>
-          <li><a>Sales</a></li>
-          <li><a>Feedback</a></li>
+          <li><button className="link-button">Support</button></li>
+          <li><button className="link-button">Sales</button></li>
+          <li><button className="link-button">Feedback</button></li>
         </ul>
       </div>
       <div className="footer-col">
         <h4>Follow Us</h4>
         <div className="social-links">
-          <a><i className="fab fa-facebook-f"></i></a>
-          <a><i className="fab fa-twitter"></i></a>
-          <a><i className="fab fa-instagram"></i></a>
-          <a><i className="fab fa-linkedin-in"></i></a>
+          <button className="link-button"><i className="fab fa-facebook-f"></i></button>
+          <button className="link-button"><i className="fab fa-twitter"></i></button>
+          <button className="link-button"><i className="fab fa-instagram"></i></button>
+          <button className="link-button"><i className="fab fa-linkedin-in"></i></button>
         </div>
       </div>
     </footer>
