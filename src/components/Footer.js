@@ -6,9 +6,9 @@ function Footer() {
       <div className="footer-col">
         <h4>About Us</h4>
         <ul>
-          <li><a>Our Story</a></li>
-          <li><a>Careers</a></li>
-          <li><a>Privacy Policy</a></li>
+          <li>Our Story</li>
+          <li>Careers</li>
+          <li>Privacy Policy</li>
         </ul>
       </div>
       <div className="footer-col">
