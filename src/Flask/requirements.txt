@@ -1,0 +1,9 @@
+geopy
+numpy
+pandas
+flask
+flask_cors
+Pillow
+requests
+tensorflow
+scikit-learn

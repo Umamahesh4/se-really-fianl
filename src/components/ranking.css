@@ -1,0 +1,384 @@
+/* Ranking Component Specific Styles */
+.ranking-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ranking-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: var(--black);
+  position: relative;
+  width: 100%;
+}
+
+.ranking-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, orangered, #ff8c42);
+  border-radius: 2px;
+}
+
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  width: 100%;
+  justify-items: center;
+}
+
+.ranking-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  max-width: 350px;
+}
+
+.ranking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(135deg, orangered, #ff8c42);
+}
+
+.ranking-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.ranking-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--black);
+  font-weight: 600;
+}
+
+.ranking-card-info {
+  font-size: 1rem;
+  margin: 8px 0;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+.ranking-card-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: orangered;
+  background: rgba(255, 69, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.ranking-card-score {
+  font-size: 1.1rem;
+  color: orangered;
+  font-weight: bold;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Tooltip Styles */
+.ranking-card-tooltip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.ranking-card-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #2c3e50;
+}
+
+.ranking-card:hover .ranking-card-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-110%);
+}
+
+/* Animation for ranking cards */
+@keyframes rankingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ranking-card {
+  animation: rankingFadeIn 0.5s ease-in-out;
+}
+
+/* Ranking Page Specific Styles */
+.ranking-page {
+  margin-left: 55px; /* Adjusted for sidebar width */
+  padding: 20px;
+  margin-top: 65px; /* Adjusted for header height */
+  min-height: calc(100vh - 65px); /* Adjusted for header height */
+}
+
+/* Header for Ranking Page */
+.ranking-page header {
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  padding: 25px;
+  color: #fff;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 40px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ranking-page header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: headerShine 6s infinite;
+}
+
+@keyframes headerShine {
+  0% { transform: rotate(45deg) translateX(-150%); }
+  100% { transform: rotate(45deg) translateX(150%); }
+}
+
+.ranking-page h1 {
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  letter-spacing: 1.5px;
+}
+
+/* Sections */
+.ranking-page .section {
+  margin-bottom: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.ranking-page .section:hover {
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.ranking-page .btn {
+  background: linear-gradient(45deg, orangered, #ff8c42);
+  border: none;
+  padding: 15px 30px;
+  margin: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.ranking-page .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease;
+}
+
+.ranking-page .btn:hover {
+  box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+}
+
+.ranking-page .btn:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Inputs */
+.ranking-page .custom-input {
+  position: relative;
+  margin: 25px 0;
+}
+
+.ranking-page input[type="text"] {
+  padding: 15px 25px;
+  width: 350px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.ranking-page input[type="text"]:focus {
+  border-color: orangered;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+  background: white;
+}
+
+/* Ranking Cards */
+.ranking-page .ranking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.ranking-page .ranking-card {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 5px solid orangered;
+}
+
+.ranking-page .ranking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, orangered, #ff8c42);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.ranking-page .ranking-card:hover::before {
+  transform: scaleX(1);
+}
+
+.ranking-page .ranking-card:nth-child(even) {
+  border-left-color: #ff6b6b;
+}
+
+.ranking-page .ranking-card:nth-child(even)::before {
+  background: linear-gradient(90deg, #ff6b6b, #ff8787);
+}
+
+.ranking-page .city-info {
+  font-size: 1.2em;
+  color: #2d3436;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tooltip Enhancements */
+.ranking-page .card-tooltip {
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  border-radius: 15px;
+  padding: 20px;
+  margin-left: 130px;
+  width: 280px;
+  transform: translate(-50%, -20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ranking-page .ranking-card:hover .card-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ranking-page .card-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #2c3e50 transparent;
+}
+
+/* Footer Enhancements */
+.ranking-page footer {
+  margin-top: 50px;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+.ranking-page footer p {
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.ranking-page footer:hover p {
+  transform: scale(1.05);
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ranking-page .ranking-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ranking-page input[type="text"] {
+    width: 80%;
+  }
+
+  .ranking-page .section {
+    padding: 20px;
+  }
+}

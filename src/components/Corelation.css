@@ -1,0 +1,298 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4; /* Light background to match the homepage */
+    color: var(--black); /* Use the black color from your homepage theme */
+    min-height: 100vh;
+}
+
+.App {
+    width: 100%;
+    max-width: none; /* Remove max-width restriction */
+    background: white; /* White background to match the homepage */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: var(--box-shadow); /* Use the box-shadow from your homepage theme */
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+    margin: 0; /* Remove any margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--black); /* Use the black color from your homepage theme */
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: orangered; /* Underline effect */
+    border-radius: 2px;
+}
+
+/* Edit Weights Button */
+.edit-weights-button {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, orangered, #ff8c42); /* Gradient effect */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-weights-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3); /* Shadow on hover */
+}
+
+/* Edit Weights Modal */
+.edit-weights-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white; /* White background to match the homepage */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow); /* Use the box-shadow from your homepage theme */
+    z-index: 1000;
+    width: 300px;
+    animation: slideIn 0.3s ease-in-out; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.edit-weights-modal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--black); /* Use the black color from your homepage theme */
+}
+
+.edit-weights-modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: var(--black); /* Use the black color from your homepage theme */
+}
+
+.edit-weights-modal input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    color: var(--black); /* Use the black color from your homepage theme */
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.edit-weights-modal input:focus {
+    border-color: orangered; /* Highlight on focus */
+}
+
+.edit-weights-modal button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, orangered, #ff8c42); /* Gradient effect */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-weights-modal button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3); /* Shadow on hover */
+}
+
+/* Preferences Form */
+.preferences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.preferences label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    color: var(--black); /* Use the black color from your homepage theme */
+}
+
+.preferences input,
+.preferences select {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    color: var(--black); /* Use the black color from your homepage theme */
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.preferences input:focus,
+.preferences select:focus {
+    border-color: orangered; /* Highlight on focus */
+}
+
+/* Compare Button */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, orangered, #ff8c42); /* Gradient effect */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3); /* Shadow on hover */
+}
+
+/* Weather Display */
+.weather-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.weather-container {
+    background: white; /* White background to match the homepage */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: var(--box-shadow); /* Use the box-shadow from your homepage theme */
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.weather-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, orangered, #ff8c42); /* Gradient top border */
+}
+
+.weather-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.weather-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--black); /* Use the black color from your homepage theme */
+}
+
+.weather-container p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: var(--black); /* Use the black color from your homepage theme */
+}
+
+/* Result */
+.result {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--black); /* Use the black color from your homepage theme */
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+/* Error Message */
+.error {
+    text-align: center;
+    color: #ff6b6b;
+    margin-top: 10px;
+    font-size: 1rem;
+    animation: shake 0.5s ease-in-out; /* Shake animation for errors */
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+}
+
+/* Correlation Display */
+.correlation-display {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+/* Form and Input Styles */
+form {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}

@@ -1,0 +1,602 @@
+/* 🌤️ General Styling */
+.weather-container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #87CEEB, #90EE90);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 📌 Title Styling */
+  .title {
+    font-size: 3rem;
+    color: lavender;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* 🔍 Search Bar Styling */
+  .search-box {
+    margin-top: 20px;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 1rem;
+    outline: none;
+    align-items: center;
+    margin-left: 120px;
+  
+  }
+  
+  .search-box button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .search-box button:hover {
+    background-color: darkorange;
+  }
+  
+  /* 📅 Date Filter Styling */
+  .filter-box {
+    margin-top: 20px;
+  }
+  
+  .filter-box select {
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+  
+  /* 📋 Weather Card */
+  .weather-card {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .weather-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .weather-card p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* 📋 Weather Information Box */
+  .weather-info {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    text-align: center;
+  }
+  
+  /* 📊 Chart Styling */
+  .chart-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  /* 📌 Trend Insights */
+  .trend-insight {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  /* 🟢 Green = Good Weather */
+  .trend-insight.good {
+    color: green;
+  }
+  
+  /* 🔴 Red = Bad Weather Alert */
+  .trend-insight.bad {
+    color: red;
+  }
+  
+  /* 🌪️ Orange = Warning */
+  .trend-insight.warning {
+    color: #ff4500;
+  }
+  
+  /* 📊 Table Styling */
+  table {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color:black;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+    color: black;
+  }
+  td{
+      color: black;
+  }
+  /* 🟥 Heatmap-Based Warnings */
+  td[data-alert="high"] {
+    background-color: #ff6961;
+    color: white;
+    font-weight: bold;
+  }
+  
+  td[data-alert="medium"] {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+  }
+  
+  td[data-alert="low"] {
+    background-color: #90EE90;
+    color: black;
+  }
+  
+  /* 🌈 Metric Checkboxes Styling */
+  .metric-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .metric-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* background: rgba(255, 255, 255, 0.8); */
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  
+  
+  /* 📊 Chart Filters Styling */
+  .chart-filters {
+    margin: 20px auto;
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-filters label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .chart-filters select {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* 🌟 Small Chart Container */
+  .small-chart-container {
+    width: 800px; /* Adjust the width as needed */
+    height: 800px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the chart */
+  }
+  
+  /* 📊 Chart Container */
+  .chart-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    height: 60%;
+  }
+  
+  /* 🌟 Loading Overlay */
+  .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* 🌟 Loader Container */
+  .loading-container {
+      position: relative;
+      z-index: 1001; /* Ensure loader is above the overlay */
+      text-align: center;
+  }
+  
+  .loading-container p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #333;
+  }
+  
+  /* 🌟 Existing Loader Animation (from Uiverse.io) */
+  .loader {
+      position: relative;
+      width: 75px;
+      height: 100px;
+  }
+  
+  .loader__bar {
+      position: absolute;
+      bottom: 0;
+      width: 10px;
+      height: 50%;
+      background: rgb(0, 0, 0);
+      transform-origin: center bottom;
+      box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .loader__bar:nth-child(1) {
+      left: 0px;
+      transform: scale(1, 0.2);
+      -webkit-animation: barUp1 4s infinite;
+      animation: barUp1 4s infinite;
+  }
+  
+  .loader__bar:nth-child(2) {
+      left: 15px;
+      transform: scale(1, 0.4);
+      -webkit-animation: barUp2 4s infinite;
+      animation: barUp2 4s infinite;
+  }
+  
+  .loader__bar:nth-child(3) {
+      left: 30px;
+      transform: scale(1, 0.6);
+      -webkit-animation: barUp3 4s infinite;
+      animation: barUp3 4s infinite;
+  }
+  
+  .loader__bar:nth-child(4) {
+      left: 45px;
+      transform: scale(1, 0.8);
+      -webkit-animation: barUp4 4s infinite;
+      animation: barUp4 4s infinite;
+  }
+  
+  .loader__bar:nth-child(5) {
+      left: 60px;
+      transform: scale(1, 1);
+      -webkit-animation: barUp5 4s infinite;
+      animation: barUp5 4s infinite;
+  }
+  
+  .loader__ball {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: rgb(44, 143, 255);
+      border-radius: 50%;
+      -webkit-animation: ball624 4s infinite;
+      animation: ball624 4s infinite;
+  }
+  
+  @keyframes ball624 {
+      0% {
+          transform: translate(0, 0);
+      }
+  
+      5% {
+          transform: translate(8px, -14px);
+      }
+  
+      10% {
+          transform: translate(15px, -10px);
+      }
+  
+      17% {
+          transform: translate(23px, -24px);
+      }
+  
+      20% {
+          transform: translate(30px, -20px);
+      }
+  
+      27% {
+          transform: translate(38px, -34px);
+      }
+  
+      30% {
+          transform: translate(45px, -30px);
+      }
+  
+      37% {
+          transform: translate(53px, -44px);
+      }
+  
+      40% {
+          transform: translate(60px, -40px);
+      }
+  
+      50% {
+          transform: translate(60px, 0);
+      }
+  
+      57% {
+          transform: translate(53px, -14px);
+      }
+  
+      60% {
+          transform: translate(45px, -10px);
+      }
+  
+      67% {
+          transform: translate(37px, -24px);
+      }
+  
+      70% {
+          transform: translate(30px, -20px);
+      }
+  
+      77% {
+          transform: translate(22px, -34px);
+      }
+  
+      80% {
+          transform: translate(15px, -30px);
+      }
+  
+      87% {
+          transform: translate(7px, -44px);
+      }
+  
+      90% {
+          transform: translate(0, -40px);
+      }
+  
+      100% {
+          transform: translate(0, 0);
+      }
+  }
+  
+  @-webkit-keyframes barUp1 {
+      0% {
+          transform: scale(1, 0.2);
+      }
+  
+      40% {
+          transform: scale(1, 0.2);
+      }
+  
+      50% {
+          transform: scale(1, 1);
+      }
+  
+      90% {
+          transform: scale(1, 1);
+      }
+  
+      100% {
+          transform: scale(1, 0.2);
+      }
+  }
+  
+  @keyframes barUp1 {
+      0% {
+          transform: scale(1, 0.2);
+      }
+  
+      40% {
+          transform: scale(1, 0.2);
+      }
+  
+      50% {
+          transform: scale(1, 1);
+      }
+  
+      90% {
+          transform: scale(1, 1);
+      }
+  
+      100% {
+          transform: scale(1, 0.2);
+      }
+  }
+  
+  @-webkit-keyframes barUp2 {
+      0% {
+          transform: scale(1, 0.4);
+      }
+  
+      40% {
+          transform: scale(1, 0.4);
+      }
+  
+      50% {
+          transform: scale(1, 0.8);
+      }
+  
+      90% {
+          transform: scale(1, 0.8);
+      }
+  
+      100% {
+          transform: scale(1, 0.4);
+      }
+  }
+  
+  @keyframes barUp2 {
+      0% {
+          transform: scale(1, 0.4);
+      }
+  
+      40% {
+          transform: scale(1, 0.4);
+      }
+  
+      50% {
+          transform: scale(1, 0.8);
+      }
+  
+      90% {
+          transform: scale(1, 0.8);
+      }
+  
+      100% {
+          transform: scale(1, 0.4);
+      }
+  }
+  
+  @-webkit-keyframes barUp3 {
+      0% {
+          transform: scale(1, 0.6);
+      }
+  
+      100% {
+          transform: scale(1, 0.6);
+      }
+  }
+  
+  @keyframes barUp3 {
+      0% {
+          transform: scale(1, 0.6);
+      }
+  
+      100% {
+          transform: scale(1, 0.6);
+      }
+  }
+  
+  @-webkit-keyframes barUp4 {
+      0% {
+          transform: scale(1, 0.8);
+      }
+  
+      40% {
+          transform: scale(1, 0.8);
+      }
+  
+      50% {
+          transform: scale(1, 0.4);
+      }
+  
+      90% {
+          transform: scale(1, 0.4);
+      }
+  
+      100% {
+          transform: scale(1, 0.8);
+      }
+  }
+  
+  @keyframes barUp4 {
+      0% {
+          transform: scale(1, 0.8);
+      }
+  
+      40% {
+          transform: scale(1, 0.8);
+      }
+  
+      50% {
+          transform: scale(1, 0.4);
+      }
+  
+      90% {
+          transform: scale(1, 0.4);
+      }
+  
+      100% {
+          transform: scale(1, 0.8);
+      }
+  }
+  
+  @-webkit-keyframes barUp5 {
+      0% {
+          transform: scale(1, 1);
+      }
+  
+      40% {
+          transform: scale(1, 1);
+      }
+  
+      50% {
+          transform: scale(1, 0.2);
+      }
+  
+      90% {
+          transform: scale(1, 0.2);
+      }
+  
+      100% {
+          transform: scale(1, 1);
+      }
+  }
+  
+  @keyframes barUp5 {
+      0% {
+          transform: scale(1, 1);
+      }
+  
+      40% {
+          transform: scale(1, 1);
+      }
+  
+      50% {
+          transform: scale(1, 0.2);
+      }
+  
+      90% {
+          transform: scale(1, 0.2);
+      }
+  
+      100% {
+          transform: scale(1, 1);
+      }
+  }
+  
