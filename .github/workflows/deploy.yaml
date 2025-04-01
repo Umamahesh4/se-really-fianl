@@ -1,4 +1,4 @@
-name: React CI Pipeline (ESLint Ignored)
+name: React CI (ESLint Ignored)
 
 on:
   push:
@@ -7,61 +7,35 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    strategy:
-      matrix:
-        node-version: [18.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
           cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
 
-      - name: Clear npm cache
+      - name: Clear NPM Cache (Fix 403 Error)
         run: npm cache clean --force
 
-      - name: Install dependencies
+      - name: Configure NPM Registry Access
         run: |
-          npm config set fund false
-          npm config set audit false
-          npm install --legacy-peer-deps --no-audit --ignore-scripts
-          npm dedupe
+          npm config set registry https://registry.npmjs.org/
+          npm config set strict-ssl false
+
+      - name: Install Dependencies (Handle Errors)
+        run: |
+          npm install --legacy-peer-deps || npm install --force || npm ci --no-audit --no-fund
 
       - name: Build with ESLint disabled
         run: |
           export DISABLE_ESLINT_PLUGIN=true
-          CI=false npm run build -- --no-verify
+          npm run build
 
-      - name: Run tests with coverage
-        run: |
-          CI=false npm test -- \
-            --watchAll=false \
-            --coverage \
-            --passWithNoTests \
-            --reporters=default \
-            --reporters=jest-junit
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: test-results
-          path: |
-            coverage/
-            junit.xml
-
-      - name: Upload production build
-        uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: production-build
-          path: build/
+      - name: Run Unit Tests
+        run: npm test -- --coverage --watchAll=false
