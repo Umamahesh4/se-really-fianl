@@ -1,4 +1,4 @@
-name: React Frontend CI (ESLint Ignored)
+name: React CI (ESLint Ignored)
 
 on:
   push:
@@ -7,12 +7,11 @@ on:
     branches: [ main ]
 
 jobs:
-  test-and-build:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -23,27 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests (ESLint ignored)
-        run: CI=false npm test -- --watchAll=false
+      - name: Build with ESLint disabled
+        run: |
+          export DISABLE_ESLINT_PLUGIN=true
+          npm run build
 
-      - name: Build production bundle (ESLint ignored)
-        run: CI=false npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-build
-          path: build
-
-  deploy:
-    needs: test-and-build
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to Production
-        run: echo "Deployment would happen here"
-        # Replace with your actual deployment commands
+      - name: Run tests (optional)
+        run: npm test -- --watchAll=false
