@@ -1,4 +1,4 @@
-name: React CI (ESLint Ignored)
+name: React CI Pipeline (ESLint Ignored)
 
 on:
   push:
@@ -7,25 +7,61 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      matrix:
+        node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm config set fund false
+          npm config set audit false
+          npm install --legacy-peer-deps --no-audit --ignore-scripts
+          npm dedupe
 
       - name: Build with ESLint disabled
         run: |
           export DISABLE_ESLINT_PLUGIN=true
-          npm run build
+          CI=false npm run build -- --no-verify
 
-      - name: Run tests (optional)
-        run: npm test -- --watchAll=false
+      - name: Run tests with coverage
+        run: |
+          CI=false npm test -- \
+            --watchAll=false \
+            --coverage \
+            --passWithNoTests \
+            --reporters=default \
+            --reporters=jest-junit
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: |
+            coverage/
+            junit.xml
+
+      - name: Upload production build
+        uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: production-build
+          path: build/

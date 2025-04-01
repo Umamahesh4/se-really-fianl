@@ -15,6 +15,7 @@ jest.mock('react-chartjs-2', () => ({
 }));
 
 // Mock window.alert
+//dfasd
 const mockAlert = jest.fn();
 window.alert = mockAlert;
 
