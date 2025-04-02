@@ -5,7 +5,7 @@ import './gps.css';
 const GaugeComponent = ({ id, value = 0, unit = '', min = 0, max = 100, width = 200, height = 200 }) => {
   const canvasRef = useRef(null);
   const gaugeRef = useRef(null);
-
+//chnaging
   // Initialize the gauge only once on mount
   useEffect(() => {
     gaugeRef.current = new RadialGauge({
