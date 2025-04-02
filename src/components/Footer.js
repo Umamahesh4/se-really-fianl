@@ -18,8 +18,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-
-      {/* Contact Us Section */}
+      {}
       <div className="footer-col">
         <h4>Contact Us</h4>
         <ul>
