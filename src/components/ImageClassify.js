@@ -21,6 +21,7 @@ function ImageClassify() {
       await handleUpload(file);
     }
   };
+  // testing
 
   const handleUpload = async (file) => {
     if (!file) {
